@@ -1,5 +1,8 @@
 
 
+// uygulamanin genelinde kullanilacak sabitler bu sinif icerisinde tanimlanir.
+// attribute'lere ulasmak icin:
+//? ApplicationConstants.instance.<attribute_name>
 class ApplicationConstants{
 
   static ApplicationConstants? _instance = ApplicationConstants._init();

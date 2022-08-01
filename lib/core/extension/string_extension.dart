@@ -5,6 +5,7 @@ import '../constants/app/app_constants.dart';
 extension StringLocalization on String {
   String get locale => this.tr();
 
+  // email validation
   String? get isValidEmail => contains(RegExp(ApplicationConstants.instance.EMAIL_REGEX)) ? null : 'Email does not valid';
 
   bool get isValidEmails => RegExp(ApplicationConstants.instance.EMAIL_REGEX).hasMatch(this);

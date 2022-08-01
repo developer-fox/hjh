@@ -1,14 +1,18 @@
 
 import 'package:flutter/material.dart';
 
-
+// burada tanimlanan methodlara erisebilmek icin:
+//? context.<method name>
 extension ContextExtension on BuildContext {
+// ozellikle ekran olculerine erisebilmek icin olusturulan getter method
   MediaQueryData get mediaQuery => MediaQuery.of(this);
 }
 
-
 extension MediaQueryExtension on BuildContext {
+  // ekran yuksekligini alir
   double get height => mediaQuery.size.height;
+
+  // ekran genisligini alir
   double get width => mediaQuery.size.width;
 
   double get lowValue => height * 0.01;
@@ -17,8 +21,7 @@ extension MediaQueryExtension on BuildContext {
   double get highValue => height * 0.1;
 }
 
-
-
+// responsive padding(all edges) extensionlari
 extension PaddingExtensionAll on BuildContext {
   EdgeInsets get paddingLow => EdgeInsets.all(lowValue);
   EdgeInsets get paddingNormal => EdgeInsets.all(normalValue);
@@ -26,6 +29,7 @@ extension PaddingExtensionAll on BuildContext {
   EdgeInsets get paddingHigh => EdgeInsets.all(highValue);
 }
 
+// responsive padding(symmetric edges) extensionlari
 extension PaddingExtensionSymetric on BuildContext {
   EdgeInsets get paddingLowVertical => EdgeInsets.symmetric(vertical: lowValue);
   EdgeInsets get paddingNormalVertical =>
@@ -45,7 +49,7 @@ extension PaddingExtensionSymetric on BuildContext {
       EdgeInsets.symmetric(horizontal: highValue);
 }
 
-
+// duration extensionlari
 extension DurationExtension on BuildContext {
   Duration get lowDuration => const Duration(milliseconds: 500);
   Duration get normalDuration => const  Duration(seconds: 1);

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-
+//? AppThemeLight.instance.<method_name> 
 class AppThemeLight{
 
   static AppThemeLight? _instance =  AppThemeLight._init();
@@ -12,18 +12,21 @@ class AppThemeLight{
 
   AppThemeLight._init();
 
+  // uygulamada kullanilacak renkler bu sekilde belirtilmistirç
+  //? AppThemeLight.instance.theme.ColorScheme.<attribute_name>
   ThemeData get theme => ThemeData(
     colorScheme: const ColorScheme(
       brightness: Brightness.light,
-      primary: Colors.black,
-      onPrimary: Colors.black, 
-      secondary: Colors.black, 
-      onSecondary: Colors.black,
-      error: Colors.black, 
+      primary: Colors.blue,
+      onPrimary: Colors.white, 
+      secondary: Colors.pink, 
+      onSecondary: Colors.yellow,
+      error: Colors.red, 
       onError: Colors.black, 
-      background: Colors.black, 
+      background: Colors.grey, 
       onBackground: Colors.black, 
-      surface: Colors.black, onSurface: Colors.black)
+      surface: Colors.lightGreen,
+      onSurface: Colors.orange)
   );
 
 

@@ -1,4 +1,6 @@
 
+// shared_preferences key'leri bu enum icerisinde tanimlanir.
 enum PreferencesKeys{
-  token
+  // ornek bir shared_preferences key
+  token,
 }

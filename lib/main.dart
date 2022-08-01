@@ -1,5 +1,7 @@
-import 'package:company_app/core/extension/context_extension.dart';
+
+import 'package:company_app/core/init/navigation/navigation_route.dart';
 import 'package:company_app/core/init/theme/app_theme.dart';
+import 'package:company_app/view/architecture_testing/test_main.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:vexana/vexana.dart';
@@ -7,12 +9,16 @@ import 'package:company_app/core/constants/app/app_constants.dart';
 import 'package:company_app/core/init/navigation/navigation_service.dart';
 import 'core/init/language/language_manager.dart';
 
-void main() {
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
  runApp(
     EasyLocalization(
       supportedLocales: LanguageManager.instance.supportedLocales,
       fallbackLocale:  LanguageManager.instance.enLocale,
-      path: ApplicationConstants.instance.FONT_FAMILY,
+      path: ApplicationConstants.instance.LANG_ASSET_PATH,
       child: const MyApp())
     );
 }
@@ -24,9 +30,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
       title: 'Flutter Demo',
       theme: AppThemeLight.instance.theme,
       home: MyHomePage(title: 'Flutter Demo Home Page'),
+      onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );
   }
@@ -49,21 +58,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-             Text(
-              'You have pushed the button this many times:',
-            ),
-            
-          ],
-        ),
-      ),
-    );
+    return MainView();
   }
 }
